@@ -1,11 +1,16 @@
 import { useColorModeValue, Input, useToast } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
-import { addTodo }  from '../store/todos/todos.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTodo, selectAllTodos }  from '../store/todos/todos.slice';
 import { FC, useState } from 'react';
+import { Todo } from '../types/todo';
+import { RootState } from '../store';
 
 export const TodoAddForm: FC = () => {
   const [title, setTitle] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const todos = useSelector<RootState, string[]>((state) => {
+    return selectAllTodos(state).map((todo) => todo.title);
+  });
   const bg = useColorModeValue('#FAFAFA', '#171823');
   const toast = useToast();
   const dispatch = useDispatch();
@@ -17,16 +22,9 @@ export const TodoAddForm: FC = () => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (!title || !title.replace(/\s/g, '').length) {
+        if (!title || !title.replace(/\s/g, '').length || todos.includes(title)) {
           setError('Title is required');
-          toast({
-            position: 'top-right',
-            title: 'Error',
-            description: 'Title is required',
-            status: 'error',
-            duration: 1500,
-            isClosable: true,
-          })
+          setTitle('');
           return;
         }
         dispatch(addTodo(title));
