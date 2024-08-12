@@ -2,7 +2,6 @@ import { useColorModeValue, Input, useToast } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, selectAllTodos }  from '../store/todos/todos.slice';
 import { FC, useState } from 'react';
-import { Todo } from '../types/todo';
 import { RootState } from '../store';
 
 export const TodoAddForm: FC = () => {
