@@ -17,7 +17,7 @@ export const TodoAddForm: FC = () => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (!title) {
+        if (!title || !title.replace(/\s/g, '').length) {
           setError('Title is required');
           toast({
             position: 'top-right',
