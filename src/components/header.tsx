@@ -11,7 +11,7 @@ export const Header: FC = () => {
       as="header"
       justifyContent="space-between"
       alignItems="centerx"
-      m="70px 0"
+      m={{ base: '40px 0', md: '70px 0', sm: '20px 0' }}
     >
       <Logo />
       <IconButton

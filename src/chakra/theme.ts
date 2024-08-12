@@ -7,7 +7,15 @@ const config: ThemeConfig = {
   initialColorMode: 'dark',
 };
 
+const breakpoints = {
+  sm: '0',
+  md: '1150px',
+  base: '540px',
+};
+
+
 export const theme = extendTheme({
+  breakpoints,
   config,
   fonts: {
     heading: 'Josefin Sans',
@@ -23,6 +31,7 @@ export const theme = extendTheme({
         bgRepeat: 'no-repeat',
         maxWidth: '540px',
         margin: '0 auto',
+        p: '0 10px'
       },
     }),
     colors: {

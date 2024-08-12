@@ -35,7 +35,7 @@ export const TodosListItem: FC<Props> = ({ todo }) => {
           id={todo.id}
         />
         <Text
-          fontSize="18px"
+          fontSize={{ base: '18px', sm: '16px' }} 
           textDecoration={todo.completed ? 'line-through' : 'none'}
         >
           {todo.title}

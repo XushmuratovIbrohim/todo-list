@@ -20,14 +20,14 @@ export const Filter: FC = () => {
       <Text>{todosLength} items left</Text>
       <Flex
         as="ul"
-        gap="19px"
+        gap={{ base: '19px', sm: '5px' }}
       >
         {filters.map((filter) => {
           return (
             <Box key={filter}>
               <Button
-                variant={['basic', 'filter']}
-                isActive={filter === filterStatus}
+                variant='basic'
+                color={filterStatus === filter ? '#3A7CFD' : '#9495A5'}
                 onClick={() => {
                   dispatch(filterTodos(filter));
                 }}

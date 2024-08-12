@@ -1,6 +1,9 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const Button: ComponentStyleConfig = {
+    baseStyle: {
+        fontSize: '100px',
+    },
     variants: {
         basic: {
             bg: 'transparent',
@@ -16,12 +19,7 @@ export const Button: ComponentStyleConfig = {
             _focus: {
                 boxShadow: 'none',
             },
-        },
-        filter: {
-            color: '#9495A5'
-        },
-        active: {
-            color: '#3A7CFD'
         }
-    }
+    },
+    
 }
