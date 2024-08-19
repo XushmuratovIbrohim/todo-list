@@ -1,5 +1,4 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { saveTodosLocally } from '../../utils/saveTodosLocally';
 import { Todo } from '../../types/todo';
 import { RootState } from '../index';
 
@@ -14,15 +13,12 @@ export const todosSlice = createSlice({
   reducers: {
     addTodo: (state, { payload: todoTitle }: { payload: string }) => {
       setOne(state, { id: Date.now().toString(), title: todoTitle, completed: false });
-      saveTodosLocally(getSelectors().selectAll(state));
     },
     deleteTodo: (state, { payload: todoId }: { payload: string }) => {
       removeOne(state, todoId);
-      saveTodosLocally(getSelectors().selectAll(state));
     },
     updateTodo: (state, { payload: todo }: { payload: Todo }) => {
       upsertOne(state, todo);
-      saveTodosLocally(getSelectors().selectAll(state));
     },
     clearCompleted: (state) => {
       const ids = getSelectors()
@@ -31,7 +27,6 @@ export const todosSlice = createSlice({
         .map((todo) => todo.id);
 
       removeMany(state, ids);
-      saveTodosLocally(getSelectors().selectAll(state));
     },
   },
 });
